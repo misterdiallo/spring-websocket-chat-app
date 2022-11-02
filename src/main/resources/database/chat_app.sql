@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 02, 2022 at 07:47 PM
+-- Generation Time: Nov 02, 2022 at 08:09 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `conversation` (
   `id` bigint(20) NOT NULL,
   `created_at` datetime NOT NULL,
-  `name_type_message` varchar(255) NOT NULL,
-  `type_of_type_message` varchar(255) NOT NULL,
-  `update_at` datetime DEFAULT NULL
+  `name_conversation` varchar(255) NOT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `creator_user_conversation` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -96,8 +96,8 @@ CREATE TABLE `simple_message` (
 CREATE TABLE `type_message` (
   `id` bigint(20) NOT NULL,
   `created_at` datetime NOT NULL,
-  `email_user` varchar(255) NOT NULL,
-  `name_user` varchar(255) DEFAULT NULL,
+  `name_type_message` varchar(255) NOT NULL,
+  `type_of_type_message` varchar(255) NOT NULL,
   `update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -147,16 +147,16 @@ CREATE TABLE `user_group` (
 --
 ALTER TABLE `conversation`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UK_5cal4dfxx1n4b55g6jxe6ye9y` (`type_of_type_message`);
+  ADD KEY `FKng9quklofekn3tgv33nygp9kx` (`creator_user_conversation`);
 
 --
 -- Indexes for table `group_message`
 --
 ALTER TABLE `group_message`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `FKt0wynm5k21v3j1wqkoucc463i` (`group_id`),
   ADD KEY `FKsi9mu00s042rmfgx59pe9uwfq` (`send_user_message_group`),
-  ADD KEY `FK5k2uqwq8qgsf1af1jfyck4q5` (`type_message_id`),
-  ADD KEY `FKt0wynm5k21v3j1wqkoucc463i` (`group_id`);
+  ADD KEY `FK5k2uqwq8qgsf1af1jfyck4q5` (`type_message_id`);
 
 --
 -- Indexes for table `group_table`
@@ -181,7 +181,7 @@ ALTER TABLE `simple_message`
 --
 ALTER TABLE `type_message`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UK_81n81yl5maqcc3m2ys244ogs9` (`email_user`);
+  ADD UNIQUE KEY `UK_binp3aqocbcgxgxa3xa1qjd18` (`type_of_type_message`);
 
 --
 -- Indexes for table `user`
@@ -200,8 +200,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_group`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK1c1dsw3q36679vaiqwvtv36a6` (`user_id`),
-  ADD KEY `FKqm96uvno3nhkbplft6mytlos` (`group_id`);
+  ADD KEY `FKqm96uvno3nhkbplft6mytlos` (`group_id`),
+  ADD KEY `FK1c1dsw3q36679vaiqwvtv36a6` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -252,6 +252,12 @@ ALTER TABLE `user_group`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `conversation`
+--
+ALTER TABLE `conversation`
+  ADD CONSTRAINT `FKng9quklofekn3tgv33nygp9kx` FOREIGN KEY (`creator_user_conversation`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `group_message`

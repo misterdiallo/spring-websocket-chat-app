@@ -22,11 +22,12 @@ public class ConversationEntity  implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name_type_message", nullable = false)
-    private String name_type_message;
+    @Column(name = "name_conversation", nullable = false)
+    private String name_conversation;
 
-    @Column(name = "type_of_type_message", unique = true, nullable = false)
-    private String type_of_type_message;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "creator_user_conversation", nullable = false)
+    private UserEntity creator_user_conversation;
 
     @Column(name = "created_at", nullable = false)
     private Date created_at;
