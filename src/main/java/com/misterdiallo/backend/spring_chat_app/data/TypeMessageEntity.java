@@ -35,6 +35,10 @@ public class TypeMessageEntity implements Serializable {
     private Date update_at;
 
 
-
-
+    public TypeMessageEntity(String name_type_message, String type_of_type_message, Date created_at, Date update_at) {
+        this.name_type_message = name_type_message;
+        this.type_of_type_message =type_of_type_message;
+        this.created_at = created_at;
+        this.update_at = update_at;
+    }
 }

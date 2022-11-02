@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.Instant;
+import java.util.Date;
+
 @SpringBootApplication
 public class SpringChatAppApplication {
     private static final Logger log = LoggerFactory.getLogger(SpringChatAppApplication.class);
@@ -17,27 +20,67 @@ public class SpringChatAppApplication {
         SpringApplication.run(SpringChatAppApplication.class, args);
     }
 
-//    @Bean
-//    public CommandLineRunner userDemo(TypeMessageRepository typeMessageRepository) {
-//        return (args) -> {
-//            // creating all type of messages
-//            log.info("---------------------------");
+    @Bean
+    public CommandLineRunner userDemo(TypeMessageRepository typeMessageRepository) {
+        return (args) -> {
+            // creating all type of messages
+//            log.info("------------Creating Default Type of Messages---------------");
 //            typeMessageRepository.save(new TypeMessageEntity(
-//                    "dss",
-//
+//                    "text",
+//                    "TEXT",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
 //            ));
-//
-//            // create users
-//            userRepository.save(new User("John Doe", "john.doe@example.com"));
-//
-//            // fetch all users
-//            log.info("Users found with findAll():");
-//            for (User user : userRepository.findAll()) {
-//                log.info(user.toString());
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "image",
+//                    "IMAGE",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "video",
+//                    "VIDEO",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "file",
+//                    "FILE",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "link",
+//                    "LINK",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "forward",
+//                    "FORWARD",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "voice",
+//                    "VOICE",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+//            typeMessageRepository.save(new TypeMessageEntity(
+//                    "unknown",
+//                    "UNKNOWN",
+//                    Date.from(Instant.now()),
+//                    Date.from(Instant.now())
+//            ));
+
+//            // fetch all type of message
+//            log.info("------------ALL Default Type of Messages---------------");
+//            for (TypeMessageEntity typeMessage : typeMessageRepository.findAll()) {
+//                log.info(typeMessage.toString());
 //            }
-//            log.info("");
-//
-//        };
-//    }
+            log.info("");
+        };
+    }
 
 }
