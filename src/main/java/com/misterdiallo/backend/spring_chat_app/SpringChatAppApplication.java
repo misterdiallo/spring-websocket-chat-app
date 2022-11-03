@@ -2,11 +2,13 @@ package com.misterdiallo.backend.spring_chat_app;
 
 import com.misterdiallo.backend.spring_chat_app.data.TypeMessageEntity;
 import com.misterdiallo.backend.spring_chat_app.data.TypeMessageRepository;
+import com.misterdiallo.backend.spring_chat_app.storage.StorageProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -15,6 +17,7 @@ import java.util.Date;
 
 @SpringBootApplication
 @EnableScheduling
+@EnableConfigurationProperties(StorageProperties.class)
 public class SpringChatAppApplication {
     private static final Logger log = LoggerFactory.getLogger(SpringChatAppApplication.class);
 

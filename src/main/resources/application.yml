@@ -1,8 +1,10 @@
+server:
+  port: 8080
+
 # Schedule task config
 thread:
   pool:
     size:10
-
 
 spring:
   datasource:
@@ -30,15 +32,10 @@ spring:
     multipart:
       max-file-size: 1048MB
       max-request-size: 2048MB
-  #  jpa:
-  #    hibernate:
-  #      ddl-auto: update
-  #    properties:
-  #      hibernate:
-  #        format_sql: false
-  #        use_sql_comments: true
-  #    show-sql: true
   main:
     allow-bean-definition-overriding: true
-server:
-  port: 6666
+
+# files storage location (stores all files uploaded via REST API)
+storage:
+  location: ./uploads/file
+
